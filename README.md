@@ -1,2 +1,1 @@
-# Auto-Hot-Key
-The AHK Scripts I Use For Increasing Productivity
+This is a repository that i use to store all the AHK scripts that i use on a dialy basis and that help me be more productive and make my life a whole lot easier..
