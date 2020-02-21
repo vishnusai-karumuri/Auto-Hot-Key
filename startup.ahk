@@ -1,10 +1,7 @@
+;#Include Host.ahk
+;#Include AltWindowDrag.ahk
 SetNumlockState, AlwaysOn
 ; Always run as admin
-if not A_IsAdmin
-{
-   Run, *RunAs %A_ScriptFullPath% ; Requires v1.0.92.01+
-   ExitApp
-}
 
 
 ; Empty trash
@@ -57,7 +54,6 @@ Return
 
 
 ;hotkey binds
-;I use brave browser coz I like it but u can rename 'brave.exe' to the name of your favourite browser like 'chrome.exe'
 #c:: 
 IfWinExist ahk_exe brave.exe
 {
@@ -69,22 +65,38 @@ Else
 	WinActivate ahk_exe brave.exe
 }
 Return
-#m:: send YOUR-MAIL-HERE
-#p:: Send YOUR-PASSWORD-HERE-NOT-RECOMMENDED-USING-ON-PUBLIC-COMPUTERS
-#Enter:: Send {Volume_Mute};To mute the volume
+#m:: send vishnusai.karumuri@gmail.com 
+#p:: Send Kvsnath$1155
+^2::Send {Media_Play_Pause}
+^1::Send {Media_Prev}
+^3::Send {Media_Next}
+#Enter:: Send {Volume_Mute}
 PgUp:: Home
 PgDn:: End
-Ralt:: AppsKey;simulates the menukey in old dell laptops , grown used to it , cant live without it
+Ralt:: Send {AppsKey}
+Return
 ^!t:: 
 {
-	Run C:\Users\YOUR-USERNAME\AppData\Local\Temp;open both temp folders if you feel those are lagging your PC down
+	Run C:\Users\KVSN\AppData\Local\Temp
 	Run C:\Windows\Temp
 	Return
 }
-^#i:: Run C:\Users\YOUR-USERNAME\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Internet Download Manager\Internet Download Manager.lnk
-^!a:: Run C:\Users\YOUR-USERNAME\Documents\
-^!c:: Run C:\Users\YOUR-USERNAME\Documents\Terminal.lnk
-^+q:: Run C:\Users\YOUR-USERNAME\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup;To quickly access startup programs folder
-^+v:: Run C:\Users\YOUR-USERNAME\Videos
-^!d:: Run C:\Users\YOUR-USERNAME\Downloads\
+^#i:: Run C:\Users\KVSN\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Internet Download Manager\Internet Download Manager.lnk
+^!a:: Run C:\Users\KVSN\Documents\
+^!c:: Run C:\Users\KVSN\Documents\Terminal.lnk
+^!s:: Run D:\Softwares\EXE
+^+q:: Run C:\Users\KVSN\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+^!m:: Run D:\Movies
+^+v:: Run C:\Users\KVSN\Videos
+^!d:: Run C:\Users\KVSN\Downloads\Compressed
++Tab:: Send #-
+!q::
+	ClipSaved := ClipboardAll      ; Save the entire clipboard to the variable ClipSaved
+	clipboard := ""                ; empty clipboard
+	Send, ^c                       ; copy the selected file
+	ClipWait, 1                    ; wait for the clipboard to contain data
+	if (!ErrorLevel)               ; If NOT ErrorLevel clipwait found data on the clipboard
+	clipboard := clipboard         ; convert to text (= copy the path)
+	Sleep, 300 
+ 	Return
 Return
